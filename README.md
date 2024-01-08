@@ -1,6 +1,9 @@
-# Media Edge API Timelines
+# Use case: Media Edge API timelines
 
-This guide provides examples of media sessions tracked with the Media Edge API service. The first example is of a media session with two chapters separated by an ad break. The second example is of a media session with a buffer state and a pause.
+This guide provides two use-case examples of media sessions tracked with the Media Edge API service, as follows: 
+
+1. Two chapters separated by an ad break 
+2. A buffer state and a pause
 
 ## Session with two chapters separated by an ad break
 

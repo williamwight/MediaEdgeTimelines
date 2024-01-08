@@ -5,7 +5,7 @@ This guide provides two use-case examples of media sessions tracked with the Med
 1. Two chapters separated by an ad break 
 2. A buffer state and a pause
 
-Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html?).
+Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
 
 ## Use case 1: two chapters separated by an ad break
@@ -15,9 +15,44 @@ The example session shown for this use case contains the following elements:
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
 
-For this session, you will need to make an API request for each action you want to track. Tracking begins with a request to start a session and receive a session ID. Once the session is started, you can track each subsequent action by making the requests shown in this guide.
+For this session, you will need to make an API request for each action that you want to track. After [configuring a datastream](https://experienceleague.adobe.com/docs/experience-platform/datastreams/configure.html), you can begin tracking a session by providing the data stream ID in the following request:
 
-The following example request shows how to start a session for tracking. Each subsequent request should be made in the same manner, but with changes to the endpoint URI to match the action.
+POST `https://edge.adobedc.net/ee-pre-prd/va/v1/sessionStart?configId={datastream ID} \`
+
+You can also specify session deatails as part of this request, including the name, length, content type, player name, channel, and app version.
+
+
+### Example request to start tracking a session
+
+The following example shows how to start tracking a session and specify session details in a request:
+
+```
+curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "events": [
+    {
+      "xdm": {
+        "eventType": "media.sessionStart",
+        "timestamp": "YYYY-08-01T02:00:00.000Z",
+        "mediaCollection": {
+          "playhead": 0,
+          "sessionDetails": {
+            "name": "API Example Player",
+            "length": 60,
+            "contentType": "VOD",
+            "playerName": "example-html5-api-player",
+            "channel": "example-channel",
+            "appVersion": "va-api-0.0.0"
+          }
+        }
+      }
+    }
+  ]
+}'
+```
+Each subsequent request should be made in the same manner, but with changes to the endpoint URI and payload to match the action.
+
 
 
 

@@ -1,17 +1,19 @@
 # Media Edge API Timelines
 
-The purpose of this guide is to provide examples of API calls during an user session.
-
-This guide contains walkthroughs on two user sessions:
-
-* Session with two chapters separated by an ad break.
-* Session with a buffer state and a pause.
+This guide provides examples of media sessions tracked with the Media Edge API service. The first example is of a media session with two chapters separated by an ad break. The second example is of a media session with a buffer state and a pause.
 
 ## Session with two chapters separated by an ad break
 
-The following table shows the user session broken down by actions. The Action timeline and Playhead position are both represented in seconds from beginning.
+This session is an example of a tracked user session that contains:
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+* Two chapters: `Chapter 1` and `Chapter 2`.
+* An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
+
+### Table
+
+The following table shows the user session broken down by actions. The `Seconds From Beginning (Real-Time)` and `Playhead Position` columns are both represented in seconds.
+
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 1 | Auto-play or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
@@ -19,22 +21,24 @@ The following table shows the user session broken down by actions. The Action ti
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 | 5 | Sends the ping event | 10 | 10 | `/ping?configId=<datastreamID>` |
 | 6 | Tracks the completion of `Chapter 2` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
-| 7 | Tracks the ad-break start | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
+| 7 | Tracks the ad break start | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
 | 8 | Tracks the `Ad 1` start | 16 | 16 | `/adStart?configId=<datastreamID>` |
 | 9 | Sends the ping events | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
 | 10 | Tracks the `Ad 1` complete | 31 | 31 | `/adComplete?configId=<datastreamID>` |
 | 11 | Tracks the `Ad 2` start | 31 | 31 | `/adStart?configId=<datastreamID>` |
 | 12 | Send the ping event | 40 | 40 | `/ping?configId=<datastreamID>` |
 | 13 | Tracks the `Ad 2` complete | 43 | 43 | `/adComplete?configId=<datastreamID>` |
-| 14 | Tracks the ad-break complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
+| 14 | Tracks the ad break as complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
 | 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 | 16 | Sends the ping event | 50 | 50 | `/ping?configId=<datastreamID>` |
 | 17 | Tracks the completion of `Chapter 2` | 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
 | 18 | The user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
-### Breakdown
+#### Description
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+The description of each action, together with the payload sent to Media Edge API are presented below.
+
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 1 | Auto-play or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 
@@ -59,13 +63,13 @@ This call signals the intention of the user to play a video. It returns a Sessio
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
 
 The app starts the ping timer. The first ping event should fire 10 seconds later.
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 3 | Tracks `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 
@@ -82,7 +86,7 @@ Enters the `playing` state using the `play` event.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 
@@ -105,11 +109,11 @@ Tracks the start of the first chapter.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 5 | Sends the ping event | 10 | 10 | `/ping?configId=<datastreamID>` |
 
-Pings the backend every 10 seconds.
+Ping the backend every 10 seconds.
 
 ```json
 {
@@ -122,11 +126,11 @@ Pings the backend every 10 seconds.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 6 | Tracks the completion of `Chapter 2` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
 
-The first chapter ends right before the ad-break.
+The first chapter ends right before the ad break.
 
 ```json
 {
@@ -139,11 +143,11 @@ The first chapter ends right before the ad-break.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 7 | Tracks the ad-break start | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
+| 7 | Tracks the ad break start | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
 
-Ad-break starts. It will contain two ads.
+Ad break starts. It will contain two ads.
 
 ```json
 {
@@ -161,11 +165,11 @@ Ad-break starts. It will contain two ads.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 8 | Tracks the `Ad 1` start | 16 | 16 | `/adStart?configId=<datastreamID>` |
 
-Ad-break starts. It will contain two ads. `Ad 1` begins.
+Ad break starts. It will contain two ads. `Ad 1` begins.
 
 ```json
 {
@@ -201,7 +205,7 @@ Ad-break starts. It will contain two ads. `Ad 1` begins.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 9 | Sends the ping events | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
 
@@ -229,7 +233,7 @@ Ping the backend every 10 seconds (in this particular case there are two separat
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 10 | Tracks the `Ad 1` complete | 31 | 31 | `/adComplete?configId=<datastreamID>` |
 
@@ -246,7 +250,7 @@ Track the end of the first ad.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 11 | Tracks the `Ad 2` start | 31 | 31 | `/adStart?configId=<datastreamID>` |
 
@@ -276,7 +280,7 @@ Track the end of the first ad.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 12 | Send the ping event | 40 | 40 | `/ping?configId=<datastreamID>` |
 
@@ -293,7 +297,7 @@ Pings the backend every 10 seconds.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 13 | Tracks the `Ad 2` complete | 43 | 43 | `/adComplete?configId=<datastreamID>` |
 
@@ -310,11 +314,11 @@ Tracks the end of the second ad.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 14 | Tracks the ad-break complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
+| 14 | Tracks the ad break as complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
 
-Tracks the end of the ad-break.
+Tracks the end of the ad break.
 
 ```json
 {
@@ -327,11 +331,11 @@ Tracks the end of the ad-break.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 
-Tracks the start of the second chapter right after the ad-break completion.
+Tracks the start of the second chapter right after the ad break completion.
 
 ```json
 {
@@ -350,7 +354,7 @@ Tracks the start of the second chapter right after the ad-break completion.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 16 | Sends the ping event | 50 | 50 | `/ping?configId=<datastreamID>` |
 
@@ -367,7 +371,7 @@ Pings the backend every 10 seconds.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 17 | Tracks the completion of `Chapter 2` | 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
 
@@ -384,7 +388,7 @@ Track the end of the second and final chapter.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 18 | The user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
@@ -403,9 +407,13 @@ Sends `sessionComplete` to the backend to indicate that the user finished watchi
 
 ## Session with a buffer state and a pause
 
-The following table shows the user session broken down by actions. The Action timeline and Playhead position are both represented in seconds from beginning.
+This is an example of a tracked session that contains both a `buffering` state and content that is paused. Note how as opposed to the `Session with 2 chapters separated by an ad break` example, in this example the `Seconds From Beginning (Real-Time)` time differs from the `Playhead Position`.
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+### Table
+
+The following table shows the user session broken down by actions. The `Seconds From Beginning (Real-Time)` and `Playhead Position` columns are both represented in seconds.
+
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 1 | Auto-play or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
@@ -417,9 +425,11 @@ The following table shows the user session broken down by actions. The Action ti
 | 8 | The user presses `play` to resume the main content | 24 | 12 | `/play?configId=<datastreamID>` |
 | 9 | The user closes the app without watching the content to the end | 29 | 17 | `/sessionEnd?configId=<datastreamID>` |
 
-### Breakdown
+#### Description
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+The description of each action, together with the payload sent to Media Edge API are presented below.
+
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 1 | Auto-play or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 
@@ -444,13 +454,13 @@ This call signals the intention of the user to play a video. The player state is
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
 
 Starts your ping timer. The first ping event should fire 10 seconds later.
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 3 | Tracks the buffer start  | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
 
@@ -467,7 +477,7 @@ Player enters the `buffering` state. This is a state in which content is not bei
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 4 | Tracks the buffer end and sends play event | 4 | 1 | `/play?configId=<datastreamID>` |
 
@@ -485,7 +495,7 @@ Sending a `play` call after the `bufferStart` call has been sent infers a `buffe
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 5 | Sends the ping event | 10 | 7 | `/ping?configId=<datastreamID>` |
 
@@ -502,7 +512,7 @@ Pings the backend every 10 seconds.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 6 | The user presses `pause` | 15 | 12 | `/pauseStart?configId=<datastreamID>` |
 
@@ -520,7 +530,7 @@ The user pauses the video. This moves the play state to `paused`.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 7 | Sends the ping event | 20 | 12 | `/ping?configId=<datastreamID>` |
 
@@ -537,7 +547,7 @@ Pings the backend every 10 seconds. The player remains in a `paused` state.
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 8 | The user presses `play` to resume the main content | 24 | 12 | `/play?configId=<datastreamID>` |
 
@@ -554,7 +564,7 @@ The user plays the media. This moves the play state to `playing`. The `play` cal
 }
 ```
 
-| # | Action | Action Timeline | Playhead Position | Client Request |
+| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
 | 9 | The user closes the app without watching the content to the end | 29 | 17 | `/sessionEnd?configId=<datastreamID>` |
 

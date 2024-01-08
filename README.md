@@ -10,10 +10,13 @@ Media Edge APIs are built on the Adobe Experience Platform to provide media even
 
 ## Use case 1: two chapters separated by an ad break
 
-The example session shown for this use case contains the following events:
+The example session shown for this use case contains the following elements:
 
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
+
+For this session, you will need to make an API request for each action you want to track. Tracking begins with a request to start a session and receive a session ID. Once the session is started, you can track each subsequent action by making the requests shown in this guide.
+
 
 
 ### Table
@@ -27,7 +30,7 @@ The following table shows the user session broken down by actions. The `Seconds 
 | 3 | Tracks `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 | 5 | Sends the ping event | 10 | 10 | `/ping?configId=<datastreamID>` |
-| 6 | Tracks the completion of `Chapter 2` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
+| 6 | Tracks the completion of `Chapter 1` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
 | 7 | Tracks the ad break start | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
 | 8 | Tracks the `Ad 1` start | 16 | 16 | `/adStart?configId=<datastreamID>` |
 | 9 | Sends the ping events | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |

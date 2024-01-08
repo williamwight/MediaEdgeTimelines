@@ -10,7 +10,7 @@ Media Edge APIs are built on the Adobe Experience Platform to provide media even
 
 ## Use case 1: two chapters separated by an ad break
 
-This session is an example of a tracked user session that contains:
+The example session shown for this use case contains the following events:
 
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.

@@ -51,16 +51,13 @@ curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
   ]
 }'
 ```
-Each subsequent request should be made in the same manner, but with changes to the endpoint URI and payload to match the action.
+Each subsequent request is made in the same manner, but with changes to the endpoint URI and payload to match the action.
 
+### Timeline of actions
 
+The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. The **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real time has passed. 
 
-
-### Table
-
-The following table shows the user session broken down by actions. The `Seconds From Beginning (Real-Time)` and `Playhead Position` columns are both represented in seconds.
-
-| # | Action | Seconds From Beginning (Real-Time) | Playhead Position | Client request |
+| # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 1 | Auto-play or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |

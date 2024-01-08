@@ -12,6 +12,8 @@ This session is an example of a tracked user session that contains:
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
 
+Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html?).
+
 ### Table
 
 The following table shows the user session broken down by actions. The `Seconds From Beginning (Real-Time)` and `Playhead Position` columns are both represented in seconds.

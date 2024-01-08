@@ -17,6 +17,8 @@ The example session shown for this use case contains the following elements:
 
 For this session, you will need to make an API request for each action you want to track. Tracking begins with a request to start a session and receive a session ID. Once the session is started, you can track each subsequent action by making the requests shown in this guide.
 
+The following example request shows how to start a session for tracking. Each subsequent request should be made in the same manner, but with changes to the endpoint URI to match the action.
+
 
 
 ### Table

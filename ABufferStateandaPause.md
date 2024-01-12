@@ -6,7 +6,7 @@ This guide provides a use case example of a media session tracked with the Media
 * The user pressing `pause`.
 * The user closing the app without finishing the content to the end.
 
-For another use case example including two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](Placeholderurl.com)
+For another use case example including two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](https://experienceleague.adobe.com)
 
 Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
@@ -22,7 +22,7 @@ You can also specify session deatails as part of this request, including the nam
 
 The following example shows how to start tracking a session and specify session details in a request:
 
-```curl
+```cURL
 curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -105,7 +105,7 @@ The application starts the ping timer. A call is not sent for this event, but th
 | --- | --- | --- | --- | --- |
 | 3 | Tracks the buffer start  | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
 
-Player enters the `buffering` state. This is a state in which content is not being played therefore the playhead is not advancing.
+Player enters the `buffering` state. Because content is not being played the playhead is not advancing.
 
 ```json
 {
@@ -122,8 +122,7 @@ Player enters the `buffering` state. This is a state in which content is not bei
 | --- | --- | --- | --- | --- |
 | 4 | Tracks the buffer end and sends play event | 4 | 1 | `/play?configId=<datastreamID>` |
 
-Buffering ends after 3 seconds so the player is sent into the `playing` state. This is necessary to mark exiting the buffering state.
-Sending a `play` call after the `bufferStart` call has been sent infers a `bufferEnd` state. This makes it so there is no need for a separate `bufferEnd` event.
+Player buffering ends after 3 seconds so a `play` call is sent to put the player into the `playing` state. Sending a `play` call after the `bufferStart` call has been sent automatically ends the `buffering` state; this makes it so there is no need for a separate `bufferEnd` event.
 
 ```json
 {
@@ -140,7 +139,7 @@ Sending a `play` call after the `bufferStart` call has been sent infers a `buffe
 | --- | --- | --- | --- | --- |
 | 5 | Sends the ping event | 10 | 7 | `/ping?configId=<datastreamID>` |
 
-Pings the backend every 10 seconds.
+A ping call is sent to the backend every 10 seconds.
 
 ```json
 {
@@ -175,7 +174,7 @@ The user pauses the video. This moves the play state to `paused`.
 | --- | --- | --- | --- | --- |
 | 7 | Sends the ping event | 20 | 12 | `/ping?configId=<datastreamID>` |
 
-Pings the backend every 10 seconds. The player remains in a `paused` state.
+A ping call is sent to the backend every 10 seconds. The player remains in a `paused` state.
 
 ```json
 {
@@ -192,7 +191,7 @@ Pings the backend every 10 seconds. The player remains in a `paused` state.
 | --- | --- | --- | --- | --- |
 | 8 | The user presses `play` to resume the main content | 24 | 12 | `/play?configId=<datastreamID>` |
 
-The user plays the media. This moves the play state to `playing`. The `play` call after a `pauseStart` call infers a `resume` call to the back end. This makes it so there is no need for a separate `resume` event.
+The user presses `play`. This moves the play state to `playing`. There is no need for a separate `resume` event.
 
 ```json
 {
@@ -209,7 +208,7 @@ The user plays the media. This moves the play state to `playing`. The `play` cal
 | --- | --- | --- | --- | --- |
 | 9 | The user closes the app without watching the content to the end | 29 | 17 | `/sessionEnd?configId=<datastreamID>` |
 
-The user closes the app. Send `sessionEnd` to the Media Edge API to signal that the session should be closed immediately, with no further processing.
+The user closes the app. `sessionEnd` is sent to the Media Edge API to signal that the session should be closed immediately, with no further processing.
 
 ```json
 {

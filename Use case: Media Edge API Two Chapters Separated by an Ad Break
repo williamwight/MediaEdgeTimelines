@@ -5,7 +5,7 @@ This guide provides a use case example of a media session tracked with the Media
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
 
-For another use case example including a buffer state and a pause, see [Use case: Media Edge API a Buffer State and a Pause](Placeholderurl.com)
+For another use case example including a buffer state and a pause, see [Use case: Media Edge API a Buffer State and a Pause](https://experienceleague.adobe.com)
 
 Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
@@ -113,7 +113,7 @@ The application starts the ping timer. A call is not sent for this event, but th
 | --- | --- | --- | --- | --- |
 | 3 | Tracks `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 
-Enters the `playing` state using the `play` event.
+Tracking enters the `playing` state using the `play` event.
 
 ```json
 {
@@ -130,7 +130,7 @@ Enters the `playing` state using the `play` event.
 | --- | --- | --- | --- | --- |
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 
-Tracks the start of the first chapter.
+Tracks the start `Chapter 1`.
 
 ```json
 {
@@ -153,7 +153,7 @@ Tracks the start of the first chapter.
 | --- | --- | --- | --- | --- |
 | 5 | Sends the ping event | 10 | 10 | `/ping?configId=<datastreamID>` |
 
-Ping the backend every 10 seconds.
+A ping call is sent to the backend every 10 seconds.
 
 ```json
 {
@@ -170,7 +170,7 @@ Ping the backend every 10 seconds.
 | --- | --- | --- | --- | --- |
 | 6 | Tracks the completion of `Chapter 2` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
 
-The first chapter ends right before the ad break.
+`Chapter 1` ends directly before the ad break.
 
 ```json
 {
@@ -209,7 +209,7 @@ Ad break starts. It will contain two ads.
 | --- | --- | --- | --- | --- |
 | 8 | Tracks the `Ad 1` start | 16 | 16 | `/adStart?configId=<datastreamID>` |
 
-Ad break starts. It will contain two ads. `Ad 1` begins.
+`Ad 1` begins to play.
 
 ```json
 {
@@ -249,7 +249,7 @@ Ad break starts. It will contain two ads. `Ad 1` begins.
 | --- | --- | --- | --- | --- |
 | 9 | Sends the ping events | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
 
-Ping the backend every 10 seconds (in this particular case there are two separate events sent at timestamps 20 and 30 respectively).
+A ping call is sent to the backend every 10 seconds. (in this particular case there are two separate events sent at timestamps 20 and 30 respectively).
 
 ```json
 {
@@ -277,7 +277,7 @@ Ping the backend every 10 seconds (in this particular case there are two separat
 | --- | --- | --- | --- | --- |
 | 10 | Tracks the `Ad 1` complete | 31 | 31 | `/adComplete?configId=<datastreamID>` |
 
-Track the end of the first ad.
+The completion of `Ad 1` is tracked.
 
 ```json
 {
@@ -294,7 +294,7 @@ Track the end of the first ad.
 | --- | --- | --- | --- | --- |
 | 11 | Tracks the `Ad 2` start | 31 | 31 | `/adStart?configId=<datastreamID>` |
 
-`Ad 2` begins.
+`Ad 2` begins to play.
 
 ```json
 {
@@ -324,7 +324,7 @@ Track the end of the first ad.
 | --- | --- | --- | --- | --- |
 | 12 | Sends the ping event | 40 | 40 | `/ping?configId=<datastreamID>` |
 
-Pings the backend every 10 seconds.
+A ping call is sent to the backend every 10 seconds.
 
 ```json
 {
@@ -341,7 +341,7 @@ Pings the backend every 10 seconds.
 | --- | --- | --- | --- | --- |
 | 13 | Tracks the `Ad 2` complete | 43 | 43 | `/adComplete?configId=<datastreamID>` |
 
-Tracks the end of the second ad.
+The completion of `Ad 2` is tracked.
 
 ```json
 {
@@ -358,7 +358,7 @@ Tracks the end of the second ad.
 | --- | --- | --- | --- | --- |
 | 14 | Tracks the ad break as complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
 
-Tracks the end of the ad break.
+The completion of the ad break is tracked.
 
 ```json
 {
@@ -375,7 +375,7 @@ Tracks the end of the ad break.
 | --- | --- | --- | --- | --- |
 | 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 
-Tracks the start of the second chapter right after the ad break completion.
+The start of `Chapter 2` is tracked directly after the completion of the ad break.
 
 ```json
 {
@@ -398,7 +398,7 @@ Tracks the start of the second chapter right after the ad break completion.
 | --- | --- | --- | --- | --- |
 | 16 | Sends the ping event | 50 | 50 | `/ping?configId=<datastreamID>` |
 
-Pings the backend every 10 seconds.
+A ping call is sent to the backend every 10 seconds.
 
 ```json
 {
@@ -415,7 +415,7 @@ Pings the backend every 10 seconds.
 | --- | --- | --- | --- | --- |
 | 17 | Tracks the completion of `Chapter 2` | 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
 
-Track the end of the second and final chapter.
+The completion of `Chapter 2` is tracked.
 
 ```json
 {
@@ -432,7 +432,7 @@ Track the end of the second and final chapter.
 | --- | --- | --- | --- | --- |
 | 18 | The user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
-Sends `sessionComplete` to the backend to indicate that the user finished watching the entire content.
+`sessionComplete` is sent to the backend to indicate that the user finished watching the entire content.
 
 ```json
 {

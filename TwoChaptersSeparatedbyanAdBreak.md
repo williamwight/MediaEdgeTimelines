@@ -1,6 +1,6 @@
 # Media Edge API use case: Two chapters separated by an ad break
 
-This guide provides a use case example of a media session tracked with the Media Edge API service. The example session shown for this use case contains the following elements:
+This guide provides a use case for tracking a media session with the Media Edge API service. The example session shown for this use case contains the following elements:
 
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.

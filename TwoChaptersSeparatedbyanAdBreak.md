@@ -55,24 +55,24 @@ The following table shows a timeline of actions to be tracked for this use case.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 1 | The auto-play function occurs or the Play button is pressed and the video starts loading. | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
-| 2 | The app starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
-| 3 | The `play` event is tracked | 0 | 0 | `/play?configId=<datastreamID>` |
-| 4 | The start of `Chapter 1` is tracked | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
-| 5 | The ping event is sent | 10 | 10 | `/ping?configId=<datastreamID>` |
-| 6 | The completion of `Chapter 1` is tracked | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
-| 7 | The ad break start is tracked | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
-| 8 | The `Ad 1` start is tracked | 16 | 16 | `/adStart?configId=<datastreamID>` |
-| 9 | The ping events are sent | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
-| 10 | The `Ad 1` completion is tracked | 31 | 31 | `/adComplete?configId=<datastreamID>` |
-| 11 | The `Ad 2` start is tracked | 31 | 31 | `/adStart?configId=<datastreamID>` |
-| 12 | The ping event is sent | 40 | 40 | `/ping?configId=<datastreamID>` |
-| 13 | The `Ad 2` completion is tracked | 43 | 43 | `/adComplete?configId=<datastreamID>` |
-| 14 | The ad break is tracked as complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
-| 15 | The start of `Chapter 2` is tracked | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
-| 16 | The ping event is sent | 50 | 50 | `/ping?configId=<datastreamID>` |
-| 17 | The completion of `Chapter 2` is tracked | 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
-| 18 | The user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
+| 1 | The auto-play function occurs, or the Play button is pressed, and the video starts loading. | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
+| 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |
+| 3 | Tracks the `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
+| 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
+| 5 | Sends a ping | 10 | 10 | `/ping?configId=<datastreamID>` |
+| 6 | Tracks the completion of `Chapter 1` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
+| 7 | Tracks the start of ad break | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
+| 8 | Tracks the start of `Ad 1` in ad break | 16 | 16 | `/adStart?configId=<datastreamID>` |
+| 9 | Sends a ping twice during `Ad 1`, each 10 seconds apart | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
+| 10 | Tracks completion of `Ad 1` | 31 | 31 | `/adComplete?configId=<datastreamID>` |
+| 11 | Tracks the start of `Ad 2` in ad break | 31 | 31 | `/adStart?configId=<datastreamID>` |
+| 12 | Sends ping | 40 | 40 | `/ping?configId=<datastreamID>` |
+| 13 | Tracks completion of `Ad 2` | 43 | 43 | `/adComplete?configId=<datastreamID>` |
+| 14 | Tracks completion of ad break | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
+| 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
+| 16 | Sends ping | 50 | 50 | `/ping?configId=<datastreamID>` |
+| 17 | Tracks completion of `Chapter 2`| 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
+| 18 | User finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
 #### Description
 

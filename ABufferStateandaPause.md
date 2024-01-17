@@ -6,7 +6,7 @@ This guide provides a use case example of a media session tracked with the Media
 * The user pressing `pause`.
 * The user closing the app without finishing the content to the end.
 
-For another use case example including two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](https://experienceleague.adobe.com)
+For another use case example that includes two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](https://experienceleague.adobe.com)
 
 Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
@@ -52,17 +52,17 @@ Each subsequent request is made in the same manner, but with changes to the endp
 
 ### Timeline of actions
 
-The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that he **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real time has passed. Both of these are measured in seconds.
+The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that he **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real-time has passed. Both of these are measured in seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 1 | Auto-play occurs or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
-| 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
-| 3 | Tracks the buffer start  | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
-| 4 | Tracks the buffer end and sends play event | 4 | 1 | `/play?configId=<datastreamID>` |
-| 5 | Sends the ping event | 10 | 7 | `/ping?configId=<datastreamID>` |
+| 1 | The auto-play function occurs or play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
+| 2 | The app starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
+| 3 | The buffer start is tracked | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
+| 4 | The buffer end is tracked and the play event is sent | 4 | 1 | `/play?configId=<datastreamID>` |
+| 5 | The ping event is sent | 10 | 7 | `/ping?configId=<datastreamID>` |
 | 6 | The user presses `pause` | 15 | 12 | `/pauseStart?configId=<datastreamID>` |
-| 7 | Sends the ping event | 20 | 12 | `/ping?configId=<datastreamID>` |
+| 7 | The ping event is sent | 20 | 12 | `/ping?configId=<datastreamID>` |
 | 8 | The user presses `play` to resume the main content | 24 | 12 | `/play?configId=<datastreamID>` |
 | 9 | The user closes the app without watching the content to the end | 29 | 17 | `/sessionEnd?configId=<datastreamID>` |
 
@@ -72,7 +72,7 @@ The description of each action, together with the payload sent to Media Edge API
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 1 | Auto-play occurs or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
+| 1 | The auto-play function occurs or play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 
 This call signals the intention of the user to play a video. The player state is not yet `playing`, but is instead `starting`. This call returns a Session ID which is referenced in the following examples with `{SID}`. The `{SID}`, is returned to the client and is used to identify all subsequent tracking calls within the session.  This call also generates a reporting event that is pushed to AEP and/or Analytics, depending on datastream configuration. Mandatory parameters must be included.
 
@@ -97,13 +97,13 @@ This call signals the intention of the user to play a video. The player state is
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 2 | App starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
+| 2 | The app starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
 
 The application starts the ping timer. A call is not sent for this event, but the first ping call should be fired 10 seconds later.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 3 | Tracks the buffer start  | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
+| 3 | The buffer start is tracked | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
 
 Player enters the `buffering` state. Because content is not being played the playhead is not advancing.
 
@@ -120,7 +120,7 @@ Player enters the `buffering` state. Because content is not being played the pla
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 4 | Tracks the buffer end and sends play event | 4 | 1 | `/play?configId=<datastreamID>` |
+| 4 | The buffer end is tracked and the play event is sent | 4 | 1 | `/play?configId=<datastreamID>` |
 
 Player buffering ends after 3 seconds so a `play` call is sent to put the player into the `playing` state. Sending a `play` call after the `bufferStart` call has been sent automatically ends the `buffering` state; this makes it so there is no need for a separate `bufferEnd` event.
 
@@ -137,7 +137,7 @@ Player buffering ends after 3 seconds so a `play` call is sent to put the player
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 5 | Sends the ping event | 10 | 7 | `/ping?configId=<datastreamID>` |
+| 5 | The ping event is sent | 10 | 7 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds.
 
@@ -172,7 +172,7 @@ The user pauses the video. This moves the play state to `paused`.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 7 | Sends the ping event | 20 | 12 | `/ping?configId=<datastreamID>` |
+| 7 | The ping event is sent | 20 | 12 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds. The player remains in a `paused` state.
 

@@ -19,7 +19,7 @@ You can also specify session details as part of this request, including the name
 
 ### Example request to start tracking a session
 
-The following example shows how to start tracking a session and specify session details in a request:
+The following example request shows how to start tracking a session and how to specify session details in a request:
 
 ```curl
 curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \

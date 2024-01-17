@@ -55,7 +55,7 @@ The following table shows a timeline of actions to be tracked for this use case.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 1 | The auto-play function occurs or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
+| 1 | The auto-play function occurs or the Play button is pressed and the video starts loading. | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | The app starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
 | 3 | The `play` event is tracked | 0 | 0 | `/play?configId=<datastreamID>` |
 | 4 | The start of `Chapter 1` is tracked | 1 | 1 | `/chapterStart?configId=<datastreamID>` |

@@ -5,7 +5,7 @@ This guide provides a use case example of a media session tracked with the Media
 * Two chapters: `Chapter 1` and `Chapter 2`.
 * An ad break inserted at the middle of the content that contains two ads: `Ad 1` and `Ad 2`.
 
-To view a use case that includes a buffer state and a pause, see [Media Edge API use case: Buffer state and a pause](https://experienceleague.adobe.com)
+To view a use case that includes a buffer state and a pause, see [Media Edge API use case: Buffer state and a pause](https://experienceleague.adobe.com).
 
 Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
@@ -15,7 +15,7 @@ For this session, you will need to make an API request for each action that you 
 
 POST `https://edge.adobedc.net/ee-pre-prd/va/v1/sessionStart?configId={dataStreamID}`
 
-You can also specify session deatails as part of this request, including the name, length, content type, player name, channel, and app version.
+You can also specify session details as part of this request, including the name, length, content type, player name, channel, and app version.
 
 ### Example request to start tracking a session
 

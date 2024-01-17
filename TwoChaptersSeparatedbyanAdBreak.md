@@ -74,7 +74,7 @@ Note that for tracking you must fire ping events every 10 real-time seconds, beg
 | 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 | 16 | Sends ping | 50 | 50 | `/ping?configId=<datastreamID>` |
 | 17 | Tracks completion of `Chapter 2`| 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
-| 18 | User finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
+| 18 | Tracks completion of session when user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
 #### Description
 

@@ -51,7 +51,7 @@ Each subsequent request is made in the same manner, but with changes to the endp
 
 ### Timeline of actions
 
-The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that he **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real-time has passed. Both of these are measured in seconds.
+The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that the **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real-time has passed. Both of these are measured in seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

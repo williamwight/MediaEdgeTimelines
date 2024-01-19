@@ -53,11 +53,11 @@ Each subsequent request is made in the same manner, but with changes to the endp
 
 ### Timeline of actions
 
-The following table summarizes a timeline of actions to be tracked for this use case. Each row shows an action and its request endpoint. Each action is described in more detail with payloads below the table. The Client request column shows the final path parameter and the other parameters required to include in the call. Note that the **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though real-time has elapsed. Both of these are measured in seconds.
+The following table summarizes a timeline of actions to be tracked for this use case. Each row shows an action and its request endpoint. Each action is described in more detail with payloads below the table. The Client request column shows the final path parameter and the other parameters required to include in the call. Note that the **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though real-time has elapsed, as measured in seconds.
 
 Note that for tracking you must fire ping events every 10 seconds, tracked in real-time, beginning after 10 seconds have elapsed from the session start. This must happen regardless of other API events that you have sent. 
 
-| # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
+| # | Action | Elapsed Real-Time (from beginning in seconds) | Playhead Position (in seconds)| Client request |
 | --- | --- | --- | --- | --- |
 | 1 | The auto-play function occurs, or the Play button is pressed, and the video starts loading. | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |

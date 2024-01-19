@@ -82,7 +82,7 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 
 Each timeline action shown in the previous table is described in detail below. Each description includes the payload that is sent as part of a Media Edge API.
 
-#### Start play
+#### 1. Start play
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
@@ -108,13 +108,15 @@ This call signals the intention of the user to play a video. The player state is
   }
 }
 ```
-#### Ping
+#### 2. Ping
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |
 
 The application starts the ping timer. A call is not sent for this event, but the first ping call should be fired 10 seconds later.
+
+#### 3. Track play
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
@@ -132,6 +134,8 @@ Tracking enters the `playing` state using the `play` event.
   }
 }
 ```
+
+#### Track Chapter 1
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
@@ -156,6 +160,8 @@ Tracks the start `Chapter 1`.
 }
 ```
 
+#### 5. Ping
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 5 | Sends a ping | 10 | 10 | `/ping?configId=<datastreamID>` |
@@ -172,6 +178,8 @@ A ping call is sent to the backend every 10 seconds.
   }
 }
 ```
+
+#### 6. Track Chapter 1 completion
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

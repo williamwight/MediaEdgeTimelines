@@ -55,7 +55,7 @@ Each subsequent request is made in the same manner, but with changes to the endp
 
 The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that the **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though real-time has elapsed. Both of these are measured in seconds.
 
-Note that for tracking you must fire ping events every 10 real-time seconds, beginning after 10 real-time seconds have elapsed. This must happen regardless of other API events that you have sent. 
+Note that for tracking you must fire ping events every 10 seconds, tracked in real-time, beginning after 10 seconds have elapsed from the session start. This must happen regardless of other API events that you have sent. 
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

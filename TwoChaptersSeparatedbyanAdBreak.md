@@ -78,7 +78,7 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 | 17 | Tracks completion of `Chapter 2`| 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
 | 18 | Tracks completion of session when user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
-#### Description
+### Detailed description of actions
 
 The description of each action, together with the payload sent to Media Edge API are presented below.
 

@@ -47,7 +47,9 @@ curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
 }'
 ```
 
-Each subsequent request is made in the same manner, but with changes to the endpoint URI and payload to match the action.
+For more information regarding how to start the session, see the [Media Edge API getting started](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/getting-started.html?lang=en#:~:text=configId%3D%7Bdatastream%20ID%7D%20%5C-,Example,-request) guide.
+
+Each subsequent request is made in the same manner, but with changes to the endpoint parameters and payload to match the action.
 
 ### Timeline of actions
 

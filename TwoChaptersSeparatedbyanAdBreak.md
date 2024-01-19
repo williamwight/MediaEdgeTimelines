@@ -107,13 +107,13 @@ This call signals the intention of the user to play a video. The player state is
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 2 | The app starts the ping event timer | 0 | 0 | `/ping?configId=<datastreamID>` |
+| 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |
 
 The application starts the ping timer. A call is not sent for this event, but the first ping call should be fired 10 seconds later.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 3 | The `play` event is tracked | 0 | 0 | `/play?configId=<datastreamID>` |
+| 3 | Tracks the `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 
 Tracking enters the `playing` state using the `play` event.
 
@@ -130,7 +130,7 @@ Tracking enters the `playing` state using the `play` event.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 4 | The start of `Chapter 1` is tracked | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
+| 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 
 Tracks the start `Chapter 1`.
 
@@ -153,7 +153,7 @@ Tracks the start `Chapter 1`.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 5 | The ping event is sent | 10 | 10 | `/ping?configId=<datastreamID>` |
+| 5 | Sends a ping | 10 | 10 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds.
 
@@ -170,7 +170,7 @@ A ping call is sent to the backend every 10 seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 6 | The completion of `Chapter 1` is tracked | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
+| 6 | Tracks the completion of `Chapter 1` | 15 | 15 | `/chapterComplete?configId=<datastreamID>` |
 
 `Chapter 1` ends directly before the ad break.
 
@@ -187,7 +187,7 @@ A ping call is sent to the backend every 10 seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 7 | The ad break start is tracked | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
+| 7 | Tracks the start of ad break | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
 
 Ad break starts. It will contain two ads.
 
@@ -209,7 +209,7 @@ Ad break starts. It will contain two ads.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 8 | The `Ad 1` start is tracked | 16 | 16 | `/adStart?configId=<datastreamID>` |
+| 8 | Tracks the start of `Ad 1` in ad break | 16 | 16 | `/adStart?configId=<datastreamID>` |
 
 `Ad 1` begins to play.
 
@@ -249,7 +249,7 @@ Ad break starts. It will contain two ads.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 9 | The ping events are sent | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
+| 9 | Sends a ping twice during `Ad 1`, each 10 seconds apart | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds. (in this particular case there are two separate events sent at timestamps 20 and 30 respectively).
 
@@ -277,7 +277,7 @@ A ping call is sent to the backend every 10 seconds. (in this particular case th
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 10 | The `Ad 1` completion is tracked | 31 | 31 | `/adComplete?configId=<datastreamID>` |
+| 10 | Tracks completion of `Ad 1` | 31 | 31 | `/adComplete?configId=<datastreamID>` |
 
 The completion of `Ad 1` is tracked.
 
@@ -294,7 +294,7 @@ The completion of `Ad 1` is tracked.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 11 | The `Ad 2` start is tracked | 31 | 31 | `/adStart?configId=<datastreamID>` |
+| 11 | Tracks the start of `Ad 2` in ad break | 31 | 31 | `/adStart?configId=<datastreamID>` |
 
 `Ad 2` begins to play.
 
@@ -324,7 +324,7 @@ The completion of `Ad 1` is tracked.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 12 | The ping event is sent | 40 | 40 | `/ping?configId=<datastreamID>` |
+| 12 | Sends ping | 40 | 40 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds.
 
@@ -341,7 +341,7 @@ A ping call is sent to the backend every 10 seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 13 | The `Ad 2` completion is tracked | 43 | 43 | `/adComplete?configId=<datastreamID>` |
+| 13 | Tracks completion of `Ad 2` | 43 | 43 | `/adComplete?configId=<datastreamID>` |
 
 The completion of `Ad 2` is tracked.
 
@@ -358,7 +358,7 @@ The completion of `Ad 2` is tracked.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 14 | The ad break is tracked as complete | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
+| 14 | Tracks completion of ad break | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
 
 The completion of the ad break is tracked.
 
@@ -375,7 +375,7 @@ The completion of the ad break is tracked.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 15 | The start of `Chapter 2` is tracked | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
+| 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 
 The start of `Chapter 2` is tracked directly after the completion of the ad break.
 
@@ -398,7 +398,7 @@ The start of `Chapter 2` is tracked directly after the completion of the ad brea
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 16 | The ping event is sent | 50 | 50 | `/ping?configId=<datastreamID>` |
+| 16 | Sends ping | 50 | 50 | `/ping?configId=<datastreamID>` |
 
 A ping call is sent to the backend every 10 seconds.
 
@@ -415,7 +415,7 @@ A ping call is sent to the backend every 10 seconds.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 17 | The completion of `Chapter 2` is tracked | 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
+| 17 | Tracks completion of `Chapter 2`| 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
 
 The completion of `Chapter 2` is tracked.
 
@@ -432,7 +432,7 @@ The completion of `Chapter 2` is tracked.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
-| 18 | The user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
+| 18 | Tracks completion of session when user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
 `sessionComplete` is sent to the backend to indicate that the user finished watching the entire content.
 

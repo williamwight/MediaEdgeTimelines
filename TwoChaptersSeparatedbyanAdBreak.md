@@ -80,7 +80,7 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 
 ### Detailed description of actions
 
-Each timeline action shown in the previous table is described below. Each description includes details of the payload sent as part of Media Edge APIs.
+Each timeline action shown in the previous table is described in detail below. Each description includes the payload that is sent as part of a Media Edge API.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

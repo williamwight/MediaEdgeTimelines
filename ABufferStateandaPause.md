@@ -6,7 +6,7 @@ This guide provides a use case example of a media session tracked with the Media
 * The user pressing `pause`.
 * The user closing the app without finishing the content to the end.
 
-For another use case example that includes two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](https://experienceleague.adobe.com)
+To view a use case example that includes two chapters separated by an ad break, see [Use case: Media Edge API Two Chapters Separated by an Ad Break](https://experienceleague.adobe.com)
 
 Media Edge APIs are built on the Adobe Experience Platform to provide media event tracking data within the framework of [XDM schemas](https://experienceleague.adobe.com/docs/experience-platform/xdm/home.html#:~:text=Experience%20Data%20Model%20(XDM)%2C,the%20power%20of%20digital%20experiences). For more information, see the [Media Edge API overview](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/overview.html).
 
@@ -48,11 +48,15 @@ curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
 }'
 ```
 
-Each subsequent request is made in the same manner, but with changes to the endpoint URI and payload to match the action.
+For more information regarding how to start the session, see the [Media Edge API getting started](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/getting-started.html?lang=en#:~:text=configId%3D%7Bdatastream%20ID%7D%20%5C-,Example,-request) guide.
+
+Each subsequent request is made in the same manner, but with changes to the endpoint parameters and payload to match the action.
 
 ### Timeline of actions
 
 The following table shows a timeline of actions to be tracked for this use case. Each row summarizes the action and the request endpoint. Each action is described in more detail with payloads below the table. Note that he **playhead position**, (the current position indicated in the horizontal timeline of the video) is not advanced during buffering or pausing, even though elapsed real-time has passed. Both of these are measured in seconds.
+
+Note that for tracking you must fire ping events every 10 seconds, tracked in real-time, beginning after 10 seconds have elapsed from the session start. This must happen regardless of other API events that you have sent.
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |

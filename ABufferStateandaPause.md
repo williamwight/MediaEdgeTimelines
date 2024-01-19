@@ -126,7 +126,7 @@ Player enters the `buffering` state. Because content is not being played the pla
 | --- | --- | --- | --- | --- |
 | 4 | Tracks the end of the buffer and a play event is sent | 4 | 1 | `/play?configId=<datastreamID>` |
 
-Player buffering ends after 3 seconds so a `play` call is sent to put the player into the `playing` state. Sending a `play` call after the `bufferStart` call has been sent automatically ends the `buffering` state; this makes it so there is no need for a separate `bufferEnd` event.
+Player buffering ends after 3 seconds so a `play` call is sent to put the player into the `playing` state. Sending a `play` call after the `bufferStart` call has been sent automatically ends the `buffering` state.
 
 ```json
 {

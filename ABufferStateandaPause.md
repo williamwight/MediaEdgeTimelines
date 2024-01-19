@@ -60,7 +60,7 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client Request |
 | --- | --- | --- | --- | --- |
-| 1 | The auto-play function occurs, or play button is pressed, and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
+| 1 | The auto-play function occurs, or the play button is pressed, and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
 | 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |
 | 3 | Tracks the buffer start | 1 | 1 | `/bufferStart?configId=<datastreamID>` |
 | 4 | Tracks the end of the buffer and a play event is sent | 4 | 1 | `/play?configId=<datastreamID>` |

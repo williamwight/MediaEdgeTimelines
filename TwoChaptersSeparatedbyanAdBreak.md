@@ -82,6 +82,8 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 
 Each timeline action shown in the previous table is described in detail below. Each description includes the payload that is sent as part of a Media Edge API.
 
+#### Start play
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 1 | The auto-play function occurs or Play button is pressed and the video starts loading | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
@@ -106,6 +108,7 @@ This call signals the intention of the user to play a video. The player state is
   }
 }
 ```
+#### Ping
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

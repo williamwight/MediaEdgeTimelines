@@ -126,6 +126,8 @@ The application starts the ping timer. A call is not sent for this event, but th
 
 Tracking enters the `playing` state using the `play` event.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.play",
@@ -144,6 +146,8 @@ Tracking enters the `playing` state using the `play` event.
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 
 Tracks the start `Chapter 1`.
+
+**Example payload**
 
 ```json
 {

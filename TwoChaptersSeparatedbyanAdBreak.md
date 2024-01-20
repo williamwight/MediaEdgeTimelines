@@ -345,6 +345,8 @@ The completion of `Ad 1` is tracked.
 }
 ```
 
+#### 12. Ping
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 12 | Sends ping | 40 | 40 | `/ping?configId=<datastreamID>` |
@@ -361,6 +363,8 @@ A ping call is sent to the backend every 10 seconds.
   }
 }
 ```
+
+#### 13. Track ad 2 completion
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
@@ -379,6 +383,8 @@ The completion of `Ad 2` is tracked.
 }
 ```
 
+#### 14. Ad break completion
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 14 | Tracks completion of ad break | 43 | 43 | `/adBreakComplete?configId=<datastreamID>` |
@@ -395,6 +401,8 @@ The completion of the ad break is tracked.
   }
 }
 ```
+
+#### 15. Track Chapter 2 start
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
@@ -419,6 +427,8 @@ The start of `Chapter 2` is tracked directly after the completion of the ad brea
 }
 ```
 
+#### 16. Ping
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 16 | Sends ping | 50 | 50 | `/ping?configId=<datastreamID>` |
@@ -436,6 +446,8 @@ A ping call is sent to the backend every 10 seconds.
 }
 ```
 
+#### 17. Track Chapter 2 completion
+
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |
 | 17 | Tracks completion of `Chapter 2`| 54 | 54 | `/chapterComplete?configId=<datastreamID>` |
@@ -452,6 +464,8 @@ The completion of `Chapter 2` is tracked.
   }
 }
 ```
+
+#### 18. Session complete
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

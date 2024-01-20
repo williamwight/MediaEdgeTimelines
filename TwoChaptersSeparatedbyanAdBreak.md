@@ -108,7 +108,7 @@ This call signals the intention of the user to play a video. The player state is
   }
 }
 ```
-#### 2. Ping
+#### 2. Ping event timer
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

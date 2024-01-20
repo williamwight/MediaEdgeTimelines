@@ -49,7 +49,7 @@ curl -i --request POST '{uri}/ee/va/v1/sessionStart?configId={dataStreamId}' \
 
 For more information regarding how to start the session, see the [Media Edge API getting started](https://experienceleague.adobe.com/docs/experience-platform/edge-network-server-api/media-edge-apis/getting-started.html?lang=en#:~:text=configId%3D%7Bdatastream%20ID%7D%20%5C-,Example,-request) guide.
 
-Each subsequent request is made in the same manner, but with changes to the endpoint path and parameters as well as the payload to match the action.
+Each subsequent request is made in the same manner, but with changes to the endpoint path, parameters, and request payload to match the action.
 
 ### Timeline of actions
 
@@ -60,7 +60,7 @@ Note that for tracking you must fire ping events every 10 seconds, tracked in re
 | # | Action | Elapsed Real-Time (from beginning in seconds) | Playhead Position (in seconds)| Client request |
 | --- | --- | --- | --- | --- |
 | 1 | The auto-play function occurs, or the Play button is pressed, and the video starts loading. | 0 | 0 | `/sessionStart?configId=<datastreamID>` |
-| 2 | The ping event timer starts | 0 | 0 | `/ping?configId=<datastreamID>` |
+| 2 | The [ping event timer](https://experienceleague.adobe.com/docs/media-analytics/using/implementation/analytics-only/streaming-media-apis/mc-api-impl/mc-api-sed-pings.html) starts | 0 | 0 | `/ping?configId=<datastreamID>` |
 | 3 | Tracks the `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 | 4 | Tracks the start of `Chapter 1` | 1 | 1 | `/chapterStart?configId=<datastreamID>` |
 | 5 | Sends a ping | 10 | 10 | `/ping?configId=<datastreamID>` |
@@ -90,6 +90,8 @@ Each timeline action shown in the previous table is described in detail below. E
 
 This call signals the intention of the user to play a video. The player state is not yet `playing`, but is instead `starting`. This call returns a Session ID which is referenced in the following examples with `{SID}`. The `{SID}`, is returned to the client and is used to identify all subsequent tracking calls within the session.  This call also generates a reporting event that is pushed to AEP and/or Analytics, depending on datastream configuration. Mandatory parameters must be included.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.sessionStart",
@@ -108,7 +110,7 @@ This call signals the intention of the user to play a video. The player state is
   }
 }
 ```
-#### 2. Ping event timer
+#### 2. [Ping event timer](https://experienceleague.adobe.com/docs/media-analytics/using/implementation/analytics-only/streaming-media-apis/mc-api-impl/mc-api-sed-pings.html)
 
 | # | Action | Elapsed Real-Time (from beginning) | Playhead Position | Client request |
 | --- | --- | --- | --- | --- |

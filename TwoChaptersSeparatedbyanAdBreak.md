@@ -174,6 +174,8 @@ Tracks the start `Chapter 1`.
 
 A ping call is sent to the backend every 10 seconds.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.ping",
@@ -193,6 +195,8 @@ A ping call is sent to the backend every 10 seconds.
 
 `Chapter 1` ends directly before the ad break.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.chapterComplete",
@@ -211,6 +215,8 @@ A ping call is sent to the backend every 10 seconds.
 | 7 | Tracks the start of ad break | 16 | 16 | `/adBreakStart?configId=<datastreamID>` |
 
 Ad break starts. It will contain two ads.
+
+**Example payload**
 
 ```json
 {
@@ -235,6 +241,8 @@ Ad break starts. It will contain two ads.
 | 8 | Tracks the start of `Ad 1` in ad break | 16 | 16 | `/adStart?configId=<datastreamID>` |
 
 `Ad 1` begins to play.
+
+**Example payload**
 
 ```json
 {
@@ -278,6 +286,8 @@ Ad break starts. It will contain two ads.
 
 A ping call is sent to the backend every 10 seconds. (in this particular case there are two separate events sent at timestamps 20 and 30 respectively).
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.ping",
@@ -308,6 +318,8 @@ A ping call is sent to the backend every 10 seconds. (in this particular case th
 
 The completion of `Ad 1` is tracked.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.adComplete",
@@ -326,6 +338,8 @@ The completion of `Ad 1` is tracked.
 | 11 | Tracks the start of `Ad 2` in ad break | 31 | 31 | `/adStart?configId=<datastreamID>` |
 
 `Ad 2` begins to play.
+
+**Example payload**
 
 ```json
 {
@@ -359,6 +373,8 @@ The completion of `Ad 1` is tracked.
 
 A ping call is sent to the backend every 10 seconds.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.ping",
@@ -377,6 +393,8 @@ A ping call is sent to the backend every 10 seconds.
 | 13 | Tracks completion of `Ad 2` | 43 | 43 | `/adComplete?configId=<datastreamID>` |
 
 The completion of `Ad 2` is tracked.
+
+**Example payload**
 
 ```json
 {
@@ -397,6 +415,8 @@ The completion of `Ad 2` is tracked.
 
 The completion of the ad break is tracked.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.adBreakComplete",
@@ -415,6 +435,8 @@ The completion of the ad break is tracked.
 | 15 | Tracks the start of `Chapter 2` | 44 | 44 | `/chapterStart?configId=<datastreamID>` |
 
 The start of `Chapter 2` is tracked directly after the completion of the ad break.
+
+**Example payload**
 
 ```json
 {
@@ -441,6 +463,8 @@ The start of `Chapter 2` is tracked directly after the completion of the ad brea
 
 A ping call is sent to the backend every 10 seconds.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.ping",
@@ -460,6 +484,8 @@ A ping call is sent to the backend every 10 seconds.
 
 The completion of `Chapter 2` is tracked.
 
+**Example payload**
+
 ```json
 {
   "eventType": "media.chapterComplete",
@@ -478,6 +504,8 @@ The completion of `Chapter 2` is tracked.
 | 18 | Tracks completion of session when user finishes watching the content to the end | 55 | 55 | `/sessionComplete?configId=<datastreamID>` |
 
 `sessionComplete` is sent to the backend to indicate that the user finished watching the entire content.
+
+**Example payload**
 
 ```json
 {

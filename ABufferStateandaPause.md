@@ -16,7 +16,7 @@ For this session, you will need to make an API request for each action that you 
 
 POST `https://edge.adobedc.net/ee-pre-prd/va/v1/sessionStart?configId={dataStreamID}`
 
-You can also specify session deatails as part of this request, including the name, length, content type, player name, channel, and app version.
+You can also specify session details as part of this request, including the name, length, content type, player name, channel, and app version.
 
 ### Example request to start tracking a session
 

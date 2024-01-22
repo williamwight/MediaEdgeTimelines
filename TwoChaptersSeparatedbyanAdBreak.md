@@ -124,7 +124,7 @@ The application starts the ping timer. A call is not sent for this event, but th
 | --- | --- | --- | --- | --- |
 | 3 | Tracks the `play` event | 0 | 0 | `/play?configId=<datastreamID>` |
 
-Tracking enters the `playing` state using the `play` event.
+Tracking enters the *playing* state using the `play` event.
 
 **Example payload**
 
@@ -172,7 +172,7 @@ Tracks the start `Chapter 1`.
 | --- | --- | --- | --- | --- |
 | 5 | Sends a ping | 10 | 10 | `/ping?configId=<datastreamID>` |
 
-A ping call is sent to the backend every 10 seconds.
+A ping call is sent to the back-end every 10 seconds.
 
 **Example payload**
 
@@ -284,7 +284,7 @@ Ad break starts. It will contain two ads.
 | --- | --- | --- | --- | --- |
 | 9 | Sends a ping twice during `Ad 1`, each 10 seconds apart | 20,30 | 20,30 | `/ping?configId=<datastreamID>` |
 
-A ping call is sent to the backend every 10 seconds. (in this particular case there are two separate events sent at timestamps 20 and 30 respectively).
+A ping call is sent to the back-end every 10 seconds. In this particular case, two separate events are sent at the timestamps 20 and 30, respectively.
 
 **Example payload**
 
